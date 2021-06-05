@@ -18,12 +18,25 @@ babel: npm install -D babel-loader @babel/core @babel/preset-env @babel/plugin-t
 
 plugin:
 html: npm i html-webpack-plugin -D
-css: npm i mini-css-extract-plugin css-loader -D
+css: npm i mini-css-extract-plugin css-loader style-loader-D
 sass: npm i -D node-sass sass-loader
 copy webpack: npm i copy-webpack-plugin -D
 
 optimización:
-npm i css-minimizer-webpack-plugin terser-webpack-plugin -D
+npm i css-minimizer-webpack-plugin terser-webpack-plugin clean-webpack-plugin-D
 
-limpiar
-npm i clean-webpack-plugin -D
+
+
+Si agregas esta configuración a .babelrc:
+
+{
+	"presets": [
+			"@babel/preset-env",
+			["@babel/preset-react", {
+				"runtime": "automatic"
+			}]
+	]
+}
+Ya no necesitas importar React en los archivos donde utilizas sintaxis jsx:
+
+App.jsx

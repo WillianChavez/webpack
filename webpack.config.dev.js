@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtactPlugin = require('mini-css-extract-plugin')
 const CopyWebPack = require('copy-webpack-plugin')
-
+const BundleAnalyserPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 module.exports = {
     entry: "./src/index.js",
     output: {
@@ -10,12 +10,13 @@ module.exports = {
         filename: "[name].[contenthash].js"
     },
     mode: 'development',
-    watch:true,
+    devtool: 'source-map',
+    watch: true,
     resolve: {
         extensions: [".js"],
-        alias:{
-            '@images':path.resolve(__dirname,'./src/assets/images'), 
-            '@CSS':path.resolve(__dirname,'./src/CSS'), 
+        alias: {
+            '@images': path.resolve(__dirname, './src/assets/images'),
+            '@CSS': path.resolve(__dirname, './src/CSS'),
 
         }
     },
@@ -48,7 +49,7 @@ module.exports = {
             filename: './index.html'
         }),
         new MiniCssExtactPlugin({
-            filename:'./assets/[name].[contenthash].css'
+            filename: './assets/[name].[contenthash].css'
         }),
         new CopyWebPack({
             patterns: [
@@ -57,8 +58,17 @@ module.exports = {
                     to: 'assets/images'
                 }
             ]
-        })
+        }),
+        new BundleAnalyserPlugin(),
     ],
-    
+    devServer: {
+     
+        contentBase: path.join(__dirname ,'dist'),
+        compress: true,
+        historyApiFallback:true,
+        port: 8080
+        
+    },
+
 
 }
