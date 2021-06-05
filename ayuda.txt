@@ -1,0 +1,26 @@
+npm init
+npm i webpack webpack-cli -D 
+
+
+Loaders
+Fuera de contexto, webpack solamente entiende JavaScript y JSON. Los loaders nos permite procesar archivos de otros tipos para convertirnos en módulos válidos que serán consumidos por nuestras aplicaciones y agregadas como dependencias.
+
+En alto nivel, los loaders poseen 2 configuraciones principales:
+
+test - propiedad que identifica cuáles archivos deberán ser transformados
+use - propiedad que identifica el loader que será usado para transformar a dichos archivos
+Plugins
+Mientras los loaders transforman ciertos tipos de módulos, los plugins _son utilizados para extender tareas específicas, como la optimización de paquetes, la gestión de activos y la inyección de variables de entorno.
+
+Una vez importado el plugin, podemos desear el personalizarlos a través de opciones.
+loader:
+babel: npm install -D babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime
+
+plugin:
+html: npm i html-webpack-plugin -D
+css: npm i mini-css-extract-plugin css-loader -D
+sass: npm i -D node-sass sass-loader
+copy webpack: npm i copy-webpack-plugin -D
+
+optimización:
+npm i css-minimizer-webpack-plugin terser-webpack-plugin -D
