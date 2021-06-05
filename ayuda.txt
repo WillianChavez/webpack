@@ -24,3 +24,6 @@ copy webpack: npm i copy-webpack-plugin -D
 
 optimización:
 npm i css-minimizer-webpack-plugin terser-webpack-plugin -D
+
+limpiar
+npm i clean-webpack-plugin -D
